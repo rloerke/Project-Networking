@@ -1,4 +1,5 @@
-#
+# Author: Nathan Jennings
+# Source: https://realpython.com/python-sockets/
 import socket
 
 HOST = '127.0.0.1'
