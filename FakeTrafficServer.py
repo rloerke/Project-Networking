@@ -11,8 +11,11 @@ destIP = input("Input the IP of the destination node: ")
 destPort = input("Input the Port you would like to connect on: ")
 
 # Set up the socket with standard parameters and bind it to the given IP and port
-s = socket.socket(socket.PF_PACKET, socket.SOCK_STREAM)
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.bind((destIP, destPort))
+
+# Listen for incoming connections
+s.listen(0)
 
 # Accept connections and store the connecting socket and address for later use
 conn, addr = s.accept()

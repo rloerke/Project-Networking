@@ -11,7 +11,7 @@ destIP = input("Input the IP of the destination node: ")
 destPort = input("Input the Port you would like to connect on: ")
 
 # Set up the socket with standard parameters and connect to it with the given IP and port
-s = socket.socket(socket.PF_PACKET, socket.SOCK_STREAM)
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((destIP, destPort))
 
 # These are the arbitrary messages that will be sent to the server
