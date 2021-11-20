@@ -11,3 +11,6 @@ Various code was adapted from:
 
 ## Extra
 The Server.py and Client.py files are for reference only. They will not be used in the project. 
+
+## Sniflog 1 and 2
+Sniflog 1 and 2 are the traces captured during the Ettercap MITM attack. 
