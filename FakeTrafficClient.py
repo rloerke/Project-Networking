@@ -22,5 +22,7 @@ mssgList = [b'You have a cool hat!', b'What a nice day!', b'What color is the sk
 while True:
     for x in mssgList:
         s.sendall(x)
+        data = s.recv(1024)
+        print(repr(data))
         time.sleep(1)
 

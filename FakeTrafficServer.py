@@ -28,5 +28,7 @@ mssgList = [b'I hate this new hat!', b'It is a terrible day!', b'Why is the sky 
 while True:
     for x in mssgList:
         conn.sendall(x)
+        data = conn.recv(1024)
+        print(repr(data))
         time.sleep(1)
 

