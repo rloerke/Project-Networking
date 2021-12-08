@@ -4,10 +4,6 @@
 
 import socket
 
-# Not sure if these are necessary?
-# import struct
-# import binascii
-
 # The first parameter determines the packet interface. Use PF_PACKET for Linux and AF_INET for Windows
 # The third parameter determines the protocol we want to use. 0x0800 is IP
 s = socket.socket(socket.PF_PACKET, socket.SOCK_RAW, socket.htons(0x0800))

@@ -15,5 +15,7 @@ The Server.py and Client.py files are for reference only. They will not be used 
 FakeTraffic Client and Server will send arbitrary messages to each other. The ARPSpoofing file should perform the actual attack.
 The hope is that I will know if the attack is working if I capture packets containing the messages written in the FakeTraffic files.
 
-## Sniflog 1 and 2
-Sniflog 1 and 2 are the traces captured during the Ettercap MITM attack. 
+## Logs
+Sniflog 1,2, and 3 are the traces captured during the Ettercap MITM attack. 
+Log3,4,5 are tshark captures at various points in the project.
+-log.txt files are console logs of all three hosts involved during an execution of the attack.
